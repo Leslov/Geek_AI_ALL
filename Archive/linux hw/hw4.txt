@@ -1,0 +1,60 @@
+# **************************
+# Задание 1
+alex@alex-VirtualBox:~$ mkdir delme
+alex@alex-VirtualBox:~$ cd /etc
+alex@alex-VirtualBox:/etc$ cat /etc/* 2>~/delme/errorList.txt
+
+# Дальше много букв и ужас, не стал вставлять (надо было в файл вывести :))
+alex@alex-VirtualBox:/etc$ cat ~/delme/errorList.txt
+cat: /etc/acpi: Это каталог
+cat: /etc/alsa: Это каталог
+cat: /etc/alternatives: Это каталог
+cat: /etc/apm: Это каталог
+cat: /etc/apparmor: Это каталог
+
+# И так далее. Более сотни подобных ошибок и еще несколько "Отказано в доступе"
+# **************************
+
+
+
+# **************************
+# Задание 2. По табам разделить не вышло, пришлось делить по пробелам, предварительно объединив несколько пробелов в один
+alex@alex-VirtualBox:~$ ll | tr -s ' ' | cut -d ' ' -f 3 | sort | uniq
+
+alex
+root
+# **************************
+
+# **************************
+# Задание 3
+alex@alex-VirtualBox:~$ sudo nano /etc/ssh/sshd_config
+[sudo] пароль для alex:
+alex@alex-VirtualBox:~$ service sshd restart
+
+==== AUTHENTICATING FOR org.freedesktop.systemd1.manage-units ===
+Чтобы перезапустить «ssh.service», необходимо пройти аутентификацию.
+Authenticating as: Alex,,, (alex)
+Password:
+==== AUTHENTICATION COMPLETE ===
+alex@alex-VirtualBox:~$ sudo nano /etc/ssh/sshd_config
+alex@alex-VirtualBox:~$ service sshd reload
+==== AUTHENTICATING FOR org.freedesktop.systemd1.manage-units ===
+Чтобы заставить «ssh.service» перечитать конфигурацию, необходимо пройти аутентификацию.
+Authenticating as: Alex,,, (alex)
+Password:
+==== AUTHENTICATION COMPLETE ===
+alex@alex-VirtualBox:~$ cat > hello2.txt
+Hello there!
+alex@alex-VirtualBox:~$ 
+
+# Ответ на вопрос "Какой сигнал передадим процессу?". Если я правильно понял, подразумевалось, какой сигнал передается процессу при нажатии Ctrl+D. Это команда не процессу, а терминалу, чтобы он зарегистрировал окончание ввода (End of File)
+# **************************
+
+# **************************
+# Задание 4. Не понял, как завершить в несколько строк, т.к. mc скрывает собой весь поток вывода, поэтому реализовал завершение процесса одной строчкой
+alex@alex-VirtualBox:~$ mc
+
+alex@alex-VirtualBox:~$ ps aux | tr -s ' ' | cut -d ' ' -f 2,11 | grep mc | cut -d ' ' -f 1 | xargs kill
+Завершено
+alex@alex-VirtualBox:~$
+# **************************

@@ -1,0 +1,123 @@
+body{
+	background: #f8f8f8;
+	/*align-content: center;*/
+}
+h1{
+	text-align: center;
+}
+
+/*Menu*/
+#menu{
+	min-width: 500px;
+	margin: 0 100px;
+	vertical-align: center;
+}
+#menu a{ 
+	color: #212121;
+	background-color: #fc0;
+	padding: 10px;
+	appearance: button;
+	text-decoration: none;
+	color: initial;
+}
+#menu a:hover {
+	background-color:  #ac0;
+}
+.logo{
+	border: 1px solid #000;
+}
+/*End Menu*/
+
+/*Footer*/
+#footer {
+	height: 50px; /* the footer's total height */
+}
+
+#footer-content {
+	background-color: #f3e5f5;
+	border: 1px solid #ab47bc;
+	height: 32px; /* height + top/bottom paddding + top/bottom border must add up to footer height */
+	padding: 8px;
+}
+/*End Footer*/
+
+/*Товар*/
+#main{
+	display: flex;
+	justify-content: center;
+	min-width: 1000px;
+}
+#main #preview{
+	min-width: 250px;
+	max-width: 400px;
+	margin-right: 100px;
+}
+#main #preview #tovarimage{
+	text-align:  center;
+}
+
+#main #description{
+	max-width: 1000px;
+	border: 0px solid black;
+	border-radius: 10px;
+}
+#main #description h3{
+	color: #000;
+	font: 18px;
+	font-weight: 400;
+	background: #eaeaea;
+}
+#short-description{
+	color: #707070;
+	font: 14px;
+	font-style: italic;
+	line-height: 16px;
+}
+#characteristics li{
+	color: #a06060;
+	line-height: 19px;
+	list-style-type: "֍ ";
+}
+#long-description{
+	color: #484343;
+	font: 16px;
+	font-weight: 400;
+	line-height: 24px;
+	text-align: left;
+}
+#price{
+	padding: 0 30px;
+}
+#price h3, p {
+	display: inline;
+}
+.rowbreak{
+	clear: both;
+}
+.column{
+	float: left;
+}
+/*END Товар*/
+
+
+.position{/*Позиция каталога*/
+	margin: 4px;
+	border: 1px solid black;
+	border-radius: 8px;
+	width: 200px;
+	height: 200px;
+	text-align:  center;
+	background: #fff;
+}
+
+.input p{
+	width: 100px;
+}
+.input input {
+    background-color: #ffe; /* Цвет фона */
+    color: #00f; /* Цвет текста */
+	margin: 8px;
+	width: 200px;
+	height: 20px;
+}
+/*Приоритеты: сверху вниз. От низкой точности к самой высокой точности*/

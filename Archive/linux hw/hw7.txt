@@ -1,0 +1,337 @@
+# ******** Задание 1 (Ахтунг, много букв, до 285 строки) *******
+alex@alex-VirtualBox:~$ apt-add-repository nginx
+Ошибка: необходимо запускать с правами администратора
+alex@alex-VirtualBox:~$ sudo apt-add-repository nginx
+Ошибка: неправильный 'nginx'
+alex@alex-VirtualBox:~$ sudo apt-add-repository ppa:nginx/stable
+ This PPA contains the latest Stable Release version of the nginx web server software.
+
+**Only Non-End-of-Life Ubuntu Releases are supported in this PPA**
+
+**Development releases of Ubuntu are not officially supported by this PPA, and uploads for those will not be available until actual final releases for those versions**
+ Больше информации: https://launchpad.net/~nginx/+archive/ubuntu/stable
+Нажмите [ENTER] для продолжения или Ctrl-C, чтобы отменить добавление.
+
+Пол:1 http://security.ubuntu.com/ubuntu focal-security InRelease [114 kB]
+Пол:2 http://ppa.launchpad.net/nginx/stable/ubuntu focal InRelease [17,5 kB]
+Сущ:3 http://ru.archive.ubuntu.com/ubuntu focal InRelease
+Сущ:4 http://ru.archive.ubuntu.com/ubuntu focal-updates InRelease
+Сущ:5 http://ru.archive.ubuntu.com/ubuntu focal-backports InRelease
+Пол:6 http://ppa.launchpad.net/nginx/stable/ubuntu focal/main i386 Packages [1 224 B]
+Пол:7 http://ppa.launchpad.net/nginx/stable/ubuntu focal/main amd64 Packages [4 944 B]
+Пол:8 http://ppa.launchpad.net/nginx/stable/ubuntu focal/main Translation-en [4 572 B]
+Получено 142 kB за 1с (101 kB/s)
+Чтение списков пакетов… Готово
+alex@alex-VirtualBox:~$ sudo apt-update
+sudo: apt-update: команда не найдена
+alex@alex-VirtualBox:~$ sudo apt update
+Сущ:1 http://ru.archive.ubuntu.com/ubuntu focal InRelease
+Сущ:2 http://ru.archive.ubuntu.com/ubuntu focal-updates InRelease
+Сущ:3 http://ru.archive.ubuntu.com/ubuntu focal-backports InRelease
+Сущ:4 http://ppa.launchpad.net/nginx/stable/ubuntu focal InRelease
+Пол:5 http://security.ubuntu.com/ubuntu focal-security InRelease [114 kB]
+Получено 114 kB за 1с (135 kB/s)
+Чтение списков пакетов… Готово
+Построение дерева зависимостей
+Чтение информации о состоянии… Готово
+Может быть обновлено 3 пакета. Запустите «apt list --upgradable» для их показа.
+alex@alex-VirtualBox:~$ sudo apt install nginx
+Чтение списков пакетов… Готово
+Построение дерева зависимостей
+Чтение информации о состоянии… Готово
+Следующие пакеты устанавливались автоматически и больше не требуются:
+  linux-headers-5.11.0-27-generic linux-hwe-5.11-headers-5.11.0-27 linux-image-5.11.0-27-generic linux-modules-5.11.0-27-generic linux-modules-extra-5.11.0-27-generic
+Для их удаления используйте «sudo apt autoremove».
+Будут установлены следующие дополнительные пакеты:
+  geoip-database libgeoip1 libnginx-mod-http-image-filter libnginx-mod-http-xslt-filter libnginx-mod-mail libnginx-mod-stream libnginx-mod-stream-geoip nginx-common nginx-core
+Предлагаемые пакеты:
+  geoip-bin fcgiwrap nginx-doc
+Следующие НОВЫЕ пакеты будут установлены:
+  geoip-database libgeoip1 libnginx-mod-http-image-filter libnginx-mod-http-xslt-filter libnginx-mod-mail libnginx-mod-stream libnginx-mod-stream-geoip nginx nginx-common nginx-core
+Обновлено 0 пакетов, установлено 10 новых пакетов, для удаления отмечено 0 пакетов, и 3 пакетов не обновлено.
+Необходимо скачать 3 960 kB архивов.
+После данной операции объём занятого дискового пространства возрастёт на 12,8 MB.
+Хотите продолжить? [Д/н] д
+Пол:1 http://ru.archive.ubuntu.com/ubuntu focal/universe amd64 geoip-database all 20191224-2 [3 029 kB]
+Пол:2 http://ppa.launchpad.net/nginx/stable/ubuntu focal/main amd64 nginx-common all 1.18.0-3ubuntu1+focal2 [68,6 kB]
+Пол:3 http://ru.archive.ubuntu.com/ubuntu focal/universe amd64 libgeoip1 amd64 1.6.12-6build1 [70,5 kB]
+Пол:4 http://ppa.launchpad.net/nginx/stable/ubuntu focal/main amd64 libnginx-mod-http-xslt-filter amd64 1.18.0-3ubuntu1+focal2 [43,0 kB]
+Пол:5 http://ppa.launchpad.net/nginx/stable/ubuntu focal/main amd64 libnginx-mod-mail amd64 1.18.0-3ubuntu1+focal2 [72,9 kB]
+Пол:6 http://ppa.launchpad.net/nginx/stable/ubuntu focal/main amd64 libnginx-mod-stream amd64 1.18.0-3ubuntu1+focal2 [97,5 kB]
+Пол:7 http://ppa.launchpad.net/nginx/stable/ubuntu focal/main amd64 libnginx-mod-stream-geoip amd64 1.18.0-3ubuntu1+focal2 [40,4 kB]
+Пол:8 http://ppa.launchpad.net/nginx/stable/ubuntu focal/main amd64 nginx-core amd64 1.18.0-3ubuntu1+focal2 [457 kB]
+Пол:9 http://ppa.launchpad.net/nginx/stable/ubuntu focal/main amd64 libnginx-mod-http-image-filter amd64 1.18.0-3ubuntu1+focal2 [44,8 kB]
+Пол:10 http://ppa.launchpad.net/nginx/stable/ubuntu focal/main amd64 nginx all 1.18.0-3ubuntu1+focal2 [35,6 kB]
+Получено 3 960 kB за 3с (1 519 kB/s)
+Предварительная настройка пакетов …
+Выбор ранее не выбранного пакета geoip-database.
+(Чтение базы данных … на данный момент установлено 238385 файлов и каталогов.)
+Подготовка к распаковке …/0-geoip-database_20191224-2_all.deb …
+Распаковывается geoip-database (20191224-2) …
+Выбор ранее не выбранного пакета libgeoip1:amd64.
+Подготовка к распаковке …/1-libgeoip1_1.6.12-6build1_amd64.deb …
+Распаковывается libgeoip1:amd64 (1.6.12-6build1) …
+Выбор ранее не выбранного пакета nginx-common.
+Подготовка к распаковке …/2-nginx-common_1.18.0-3ubuntu1+focal2_all.deb …
+Распаковывается nginx-common (1.18.0-3ubuntu1+focal2) …
+Выбор ранее не выбранного пакета libnginx-mod-http-xslt-filter.
+Подготовка к распаковке …/3-libnginx-mod-http-xslt-filter_1.18.0-3ubuntu1+focal2_amd64.deb …
+Распаковывается libnginx-mod-http-xslt-filter (1.18.0-3ubuntu1+focal2) …
+Выбор ранее не выбранного пакета libnginx-mod-mail.
+Подготовка к распаковке …/4-libnginx-mod-mail_1.18.0-3ubuntu1+focal2_amd64.deb …
+Распаковывается libnginx-mod-mail (1.18.0-3ubuntu1+focal2) …
+Выбор ранее не выбранного пакета libnginx-mod-stream.
+Подготовка к распаковке …/5-libnginx-mod-stream_1.18.0-3ubuntu1+focal2_amd64.deb …
+Распаковывается libnginx-mod-stream (1.18.0-3ubuntu1+focal2) …
+Выбор ранее не выбранного пакета libnginx-mod-stream-geoip.
+Подготовка к распаковке …/6-libnginx-mod-stream-geoip_1.18.0-3ubuntu1+focal2_amd64.deb …
+Распаковывается libnginx-mod-stream-geoip (1.18.0-3ubuntu1+focal2) …
+Выбор ранее не выбранного пакета nginx-core.
+Подготовка к распаковке …/7-nginx-core_1.18.0-3ubuntu1+focal2_amd64.deb …
+Распаковывается nginx-core (1.18.0-3ubuntu1+focal2) …
+Выбор ранее не выбранного пакета libnginx-mod-http-image-filter.
+Подготовка к распаковке …/8-libnginx-mod-http-image-filter_1.18.0-3ubuntu1+focal2_amd64.deb …
+Распаковывается libnginx-mod-http-image-filter (1.18.0-3ubuntu1+focal2) …
+Выбор ранее не выбранного пакета nginx.
+Подготовка к распаковке …/9-nginx_1.18.0-3ubuntu1+focal2_all.deb …
+Распаковывается nginx (1.18.0-3ubuntu1+focal2) …
+Настраивается пакет nginx-common (1.18.0-3ubuntu1+focal2) …
+Created symlink /etc/systemd/system/multi-user.target.wants/nginx.service → /lib/systemd/system/nginx.service.
+Настраивается пакет libgeoip1:amd64 (1.6.12-6build1) …
+Настраивается пакет geoip-database (20191224-2) …
+Настраивается пакет libnginx-mod-stream (1.18.0-3ubuntu1+focal2) …
+Настраивается пакет nginx-core (1.18.0-3ubuntu1+focal2) …
+ * Upgrading binary nginx                                                                                                                                                                              [ OK ]
+Настраивается пакет libnginx-mod-mail (1.18.0-3ubuntu1+focal2) …
+Настраивается пакет nginx (1.18.0-3ubuntu1+focal2) …
+Настраивается пакет libnginx-mod-http-image-filter (1.18.0-3ubuntu1+focal2) …
+Настраивается пакет libnginx-mod-stream-geoip (1.18.0-3ubuntu1+focal2) …
+Настраивается пакет libnginx-mod-http-xslt-filter (1.18.0-3ubuntu1+focal2) …
+Обрабатываются триггеры для libc-bin (2.31-0ubuntu9.2) …
+Обрабатываются триггеры для ufw (0.36-6ubuntu1) …
+Обрабатываются триггеры для systemd (245.4-4ubuntu3.13) …
+Обрабатываются триггеры для man-db (2.9.1-1) …
+Обрабатываются триггеры для nginx-core (1.18.0-3ubuntu1+focal2) …
+Triggering nginx reload ...
+alex@alex-VirtualBox:~$ nginx --help
+nginx: invalid option: "-"
+alex@alex-VirtualBox:~$ whatis nginx
+nginx (8)            - "HTTP and reverse proxy server, mail proxy server"
+alex@alex-VirtualBox:~$ sudo apt remove nginx
+Чтение списков пакетов… Готово
+Построение дерева зависимостей
+Чтение информации о состоянии… Готово
+Следующие пакеты устанавливались автоматически и больше не требуются:
+  geoip-database libgeoip1 libnginx-mod-http-image-filter libnginx-mod-http-xslt-filter libnginx-mod-mail libnginx-mod-stream libnginx-mod-stream-geoip linux-headers-5.11.0-27-generic
+  linux-hwe-5.11-headers-5.11.0-27 linux-image-5.11.0-27-generic linux-modules-5.11.0-27-generic linux-modules-extra-5.11.0-27-generic nginx-common nginx-core
+Для их удаления используйте «sudo apt autoremove».
+Следующие пакеты будут УДАЛЕНЫ:
+  nginx
+Обновлено 0 пакетов, установлено 0 новых пакетов, для удаления отмечено 1 пакетов, и 3 пакетов не обновлено.
+После данной операции объём занятого дискового пространства уменьшится на 48,1 kB.
+Хотите продолжить? [Д/н] д
+(Чтение базы данных … на данный момент установлено 238483 файла и каталога.)
+Удаляется nginx (1.18.0-3ubuntu1+focal2) …
+alex@alex-VirtualBox:~$ sudo apt install nginx
+Чтение списков пакетов… Готово
+Построение дерева зависимостей
+Чтение информации о состоянии… Готово
+Следующие пакеты устанавливались автоматически и больше не требуются:
+  linux-headers-5.11.0-27-generic linux-hwe-5.11-headers-5.11.0-27 linux-image-5.11.0-27-generic linux-modules-5.11.0-27-generic linux-modules-extra-5.11.0-27-generic
+Для их удаления используйте «sudo apt autoremove».
+Следующие НОВЫЕ пакеты будут установлены:
+  nginx
+Обновлено 0 пакетов, установлено 1 новых пакетов, для удаления отмечено 0 пакетов, и 3 пакетов не обновлено.
+Необходимо скачать 35,6 kB архивов.
+После данной операции объём занятого дискового пространства возрастёт на 48,1 kB.
+Пол:1 http://ppa.launchpad.net/nginx/stable/ubuntu focal/main amd64 nginx all 1.18.0-3ubuntu1+focal2 [35,6 kB]
+Получено 35,6 kB за 0с (137 kB/s)
+Выбор ранее не выбранного пакета nginx.
+(Чтение базы данных … на данный момент установлено 238480 файлов и каталогов.)
+Подготовка к распаковке …/nginx_1.18.0-3ubuntu1+focal2_all.deb …
+Распаковывается nginx (1.18.0-3ubuntu1+focal2) …
+Настраивается пакет nginx (1.18.0-3ubuntu1+focal2) …
+alex@alex-VirtualBox:~$ dpkg --help
+Использование: dpkg [<параметр> …] <команда>
+
+Commands:
+  -i|--install       <.deb file name>... | -R|--recursive <directory>...
+  --unpack           <.deb file name>... | -R|--recursive <directory>...
+  -A|--record-avail  <.deb file name>... | -R|--recursive <directory>...
+  --configure        <package>... | -a|--pending
+  --triggers-only    <package>... | -a|--pending
+  -r|--remove        <package>... | -a|--pending
+  -P|--purge         <package>... | -a|--pending
+  -V|--verify [<package>...]       Verify the integrity of package(s).
+  --get-selections [<pattern>...]  Get list of selections to stdout.
+  --set-selections                 Set package selections from stdin.
+  --clear-selections               Deselect every non-essential package.
+  --update-avail [<Packages-file>] Replace available packages info.
+  --merge-avail [<Packages-file>]  Merge with info from file.
+  --clear-avail                    Erase existing available info.
+  --forget-old-unavail             Forget uninstalled unavailable pkgs.
+  -s|--status [<package>...]       Display package status details.
+  -p|--print-avail [<package>...]  Display available version details.
+  -L|--listfiles <package>...      List files 'owned' by package(s).
+  -l|--list [<pattern>...]         List packages concisely.
+  -S|--search <pattern>...         Find package(s) owning file(s).
+  -C|--audit [<package>...]        Check for broken package(s).
+  --yet-to-unpack                  Print packages selected for installation.
+  --predep-package                 Print pre-dependencies to unpack.
+  --add-architecture <arch>        Add <arch> to the list of architectures.
+  --remove-architecture <arch>     Remove <arch> from the list of architectures.
+  --print-architecture             Print dpkg architecture.
+  --print-foreign-architectures    Print allowed foreign architectures.
+  --assert-<feature>               Assert support for the specified feature.
+  --validate-<thing> <string>      Validate a <thing>'s <string>.
+  --compare-versions <a> <op> <b>  Compare version numbers - see below.
+  --force-help                     Show help on forcing.
+  -Dh|--debug=help                 Show help on debugging.
+
+  -?, --help                          Вывести это сообщение
+  --version                           Вывести номер версии
+
+Assertable features: support-predepends, working-epoch, long-filenames,
+  multi-conrep, multi-arch, versioned-provides.
+
+Validatable things: pkgname, archname, trigname, version.
+
+Use dpkg with -b, --build, -c, --contents, -e, --control, -I, --info,
+  -f, --field, -x, --extract, -X, --vextract, --ctrl-tarfile, --fsys-tarfile
+on archives (type dpkg-deb --help).
+
+Параметры:
+  --admindir=<каталог>             Использовать <каталог> вместо /var/lib/dpkg
+  --root=<каталог>                 Установить в другой
+                                   корневой каталог
+  --instdir=<каталог>              Изменить корневой каталог для
+                                   установки, не меняя административный
+                                   каталог
+  --path-exclude=<шабл>            Не устанавливать пути, которые совпадают
+                                   с данным шаблоном оболочки.
+  --path-include=<шабл>            Повторно включить шаблон после
+                                   предыдущего исключения.
+  -O|--selected-only               Пропустить не выбранные для
+                                   установки/обновления пакеты
+  -E|--skip-same-version           Пропустить пакеты, версия
+                                   которых совпадает с установленной
+  -G|--refuse-downgrade            Пропустить пакеты, версия
+                                   которых младше установленной
+  -B|--auto-deconfigure            Установить, даже если это может сделать
+                                   другие пакеты неработоспособными
+  --[no-]triggers                  Пропустить или принудительно выполнить
+                                   последовательную обработку триггеров
+  --verify-format=<формат>         Проверить формат вывода
+                                   (поддерживается: «rpm»).
+  --no-debsig                      Не проверять подписи пакетов
+  --no-act|--dry-run|--simulate
+                                   Показать, что должно быть сделано, но
+                                   не выполнять действия
+  -D|--debug=<восьм. знач.>        Включить отладку,
+                                   см. -Dhelp или --debug=help
+  --status-fd <n>                  Вывести информацию об изменениях
+                                   состояний пакетов в
+                                   файловый дескриптор <n>
+  --status-logger=<команда>        Посылать изменение состояния
+                                   <командному> stdin
+  --log=<имя файла>                Записывать изменения состояний
+                                   и действия в <имя файла>
+  --ignore-depends=<пакет>,…
+                                   Игнорировать зависимости от <пакета>
+  --force-…                      Игнорировать проблемы, см. --force-help
+  --no-force-…|--refuse-…
+                                   Прекратить работу при
+                                   обнаружении проблем
+  --abort-after <n>                Прекратить работу после
+                                   обнаружения <n> количества ошибок
+
+Операторы сравнения, возможные в --compare-versions:
+  lt le eq ne ge gt       (пустое значение версии считать самой ранней);
+  lt-nl le-nl ge-nl gt-nl (пустое значение версии считать самой поздней);
+  < << <= = >= >> >       (для совместимости с синтаксисом файла control).
+
+Программы «apt» или «aptitude» предоставляют дружественный интерфейс
+управления пакетами.
+alex@alex-VirtualBox:~$ sudo dpkg --remove nginx
+(Чтение базы данных … на данный момент установлено 238483 файла и каталога.)
+Удаляется nginx (1.18.0-3ubuntu1+focal2) …
+alex@alex-VirtualBox:~$ whatis nginx
+nginx (8)            - "HTTP and reverse proxy server, mail proxy server"
+alex@alex-VirtualBox:~$ nginx
+nginx: [alert] could not open error log file: open() "/var/log/nginx/error.log" failed (13: Permission denied)
+2021/11/17 09:42:34 [warn] 28344#28344: the "user" directive makes sense only if the master process runs with super-user privileges, ignored in /etc/nginx/nginx.conf:1
+2021/11/17 09:42:34 [emerg] 28344#28344: open() "/var/log/nginx/access.log" failed (13: Permission denied)
+alex@alex-VirtualBox:~$ sudo dpkg --remove --force-remove-reinstreq nginx
+dpkg: предупреждение: игнорируется запрос на удаление неустановленного пакета nginx
+alex@alex-VirtualBox:~$ dpkg -l | grep nginx
+ii  libnginx-mod-http-image-filter             1.18.0-3ubuntu1+focal2                amd64        HTTP image filter module for Nginx
+ii  libnginx-mod-http-xslt-filter              1.18.0-3ubuntu1+focal2                amd64        XSLT Transformation module for Nginx
+ii  libnginx-mod-mail                          1.18.0-3ubuntu1+focal2                amd64        Mail module for Nginx
+ii  libnginx-mod-stream                        1.18.0-3ubuntu1+focal2                amd64        Stream module for Nginx
+ii  libnginx-mod-stream-geoip                  1.18.0-3ubuntu1+focal2                amd64        GeoIP Stream module for Nginx
+ii  nginx-common                               1.18.0-3ubuntu1+focal2                all          small, powerful, scalable web/proxy server - common files
+ii  nginx-core                                 1.18.0-3ubuntu1+focal2                amd64        nginx web/proxy server (standard version)
+alex@alex-VirtualBox:~$ sudo apt remove nginx
+Чтение списков пакетов… Готово
+Построение дерева зависимостей
+Чтение информации о состоянии… Готово
+Пакет «nginx» не установлен, поэтому не может быть удалён
+Следующие пакеты устанавливались автоматически и больше не требуются:
+  geoip-database libgeoip1 libnginx-mod-http-image-filter libnginx-mod-http-xslt-filter libnginx-mod-mail libnginx-mod-stream libnginx-mod-stream-geoip linux-headers-5.11.0-27-generic
+  linux-hwe-5.11-headers-5.11.0-27 linux-image-5.11.0-27-generic linux-modules-5.11.0-27-generic linux-modules-extra-5.11.0-27-generic nginx-common nginx-core
+Для их удаления используйте «sudo apt autoremove».
+Обновлено 0 пакетов, установлено 0 новых пакетов, для удаления отмечено 0 пакетов, и 3 пакетов не обновлено.
+alex@alex-VirtualBox:~$
+
+
+
+# ****** Задание 2 ********
+alex@alex-VirtualBox:~$ snap install opera
+ошибка: access denied (попробуйте как суперпользователь "sudo")
+alex@alex-VirtualBox:~$ sudo apt install opera
+Чтение списков пакетов… Готово
+Построение дерева зависимостей
+Чтение информации о состоянии… Готово
+
+Пакет apt "opera" отсутствует, но существует snap-пакет с таким наименованием.
+Попробуйте "snap install opera"
+
+E: Невозможно найти пакет opera
+alex@alex-VirtualBox:~$ sudo snap install opera
+opera 81.0.4196.37 от Opera (opera-software✓) установлен
+alex@alex-VirtualBox:~$
+
+
+
+
+# ****** Задание 3 ********
+alex@alex-VirtualBox:~$ sudo iptables -P INPUT DROP
+alex@alex-VirtualBox:~$
+# После этой команды пришлось продолжить работу в линукс машине :) 
+alex@alex-VirtualBox:~$ sudo iptables -A INPUT -p tcp --dport 80 -j ACCEPT
+[sudo] пароль для alex: 
+alex@alex-VirtualBox:~$ sudo iptables -A INPUT -p tcp --dport 22 -j ACCEPT
+alex@alex-VirtualBox:~$ sudo iptables -L
+[sudo] пароль для alex:
+Chain INPUT (policy DROP)
+target     prot opt source               destination
+ACCEPT     tcp  --  anywhere             anywhere             tcp dpt:http
+ACCEPT     tcp  --  anywhere             anywhere             tcp dpt:ssh
+
+Chain FORWARD (policy ACCEPT)
+target     prot opt source               destination
+
+Chain OUTPUT (policy ACCEPT)
+target     prot opt source               destination
+alex@alex-VirtualBox:~$
+
+# Надо было сначала разрешить соединения по портам, а потом уже запретить для всех
+
+
+
+
+
+# ****** Задание 4 ********
+alex@alex-VirtualBox:~$ sudo iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 8080
+alex@alex-VirtualBox:~$
+# Жесть тут синтаксис

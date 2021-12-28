@@ -1,0 +1,239 @@
+# ******** Задание 2 ********
+
+alex@alex-VirtualBox:~$ sudo apt install apt-transport-https ca-certificates curl software-properties-common -y
+[sudo] пароль для alex:
+Чтение списков пакетов… Готово
+Построение дерева зависимостей
+Чтение информации о состоянии… Готово
+Уже установлен пакет ca-certificates самой новой версии (20210119~20.04.2).
+ca-certificates помечен как установленный вручную.
+Уже установлен пакет software-properties-common самой новой версии (0.99.9.8).
+software-properties-common помечен как установленный вручную.
+Следующие пакеты устанавливались автоматически и больше не требуются:
+  geoip-database libgeoip1 libnginx-mod-http-image-filter libnginx-mod-http-xslt-filter libnginx-mod-mail libnginx-mod-stream libnginx-mod-stream-geoip linux-headers-5.11.0-27-generic
+  linux-hwe-5.11-headers-5.11.0-27 linux-image-5.11.0-27-generic linux-modules-5.11.0-27-generic linux-modules-extra-5.11.0-27-generic nginx-common nginx-core
+Для их удаления используйте «sudo apt autoremove».
+Следующие НОВЫЕ пакеты будут установлены:
+  apt-transport-https curl
+Обновлено 0 пакетов, установлено 2 новых пакетов, для удаления отмечено 0 пакетов, и 3 пакетов не обновлено.
+Необходимо скачать 166 kB архивов.
+После данной операции объём занятого дискового пространства возрастёт на 573 kB.
+Пол:1 http://ru.archive.ubuntu.com/ubuntu focal-updates/universe amd64 apt-transport-https all 2.0.6 [4 680 B]
+Пол:2 http://ru.archive.ubuntu.com/ubuntu focal-updates/main amd64 curl amd64 7.68.0-1ubuntu2.7 [161 kB]
+Получено 166 kB за 1с (168 kB/s)
+Выбор ранее не выбранного пакета apt-transport-https.
+(Чтение базы данных … на данный момент установлено 238480 файлов и каталогов.)
+Подготовка к распаковке …/apt-transport-https_2.0.6_all.deb …
+Распаковывается apt-transport-https (2.0.6) …
+Выбор ранее не выбранного пакета curl.
+Подготовка к распаковке …/curl_7.68.0-1ubuntu2.7_amd64.deb …
+Распаковывается curl (7.68.0-1ubuntu2.7) …
+Настраивается пакет apt-transport-https (2.0.6) …
+Настраивается пакет curl (7.68.0-1ubuntu2.7) …
+Обрабатываются триггеры для man-db (2.9.1-1) …
+alex@alex-VirtualBox:~$ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+OK
+alex@alex-VirtualBox:~$ sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+Сущ:1 http://ru.archive.ubuntu.com/ubuntu focal InRelease
+Пол:2 http://ru.archive.ubuntu.com/ubuntu focal-updates InRelease [114 kB]
+Пол:3 http://ru.archive.ubuntu.com/ubuntu focal-backports InRelease [101 kB]
+Пол:4 http://ru.archive.ubuntu.com/ubuntu focal-updates/main i386 Packages [563 kB]
+Пол:5 http://ru.archive.ubuntu.com/ubuntu focal-updates/main amd64 Packages [1 344 kB]
+Пол:6 https://download.docker.com/linux/ubuntu focal InRelease [57,7 kB]
+Пол:7 http://security.ubuntu.com/ubuntu focal-security InRelease [114 kB]
+Пол:8 https://download.docker.com/linux/ubuntu focal/stable amd64 Packages [12,9 kB]
+Сущ:9 http://ppa.launchpad.net/nginx/stable/ubuntu focal InRelease
+Пол:10 http://ru.archive.ubuntu.com/ubuntu focal-updates/main Translation-en [276 kB]
+Пол:11 http://security.ubuntu.com/ubuntu focal-security/main Translation-en [184 kB]
+Пол:12 http://ru.archive.ubuntu.com/ubuntu focal-updates/main amd64 DEP-11 Metadata [279 kB]
+Пол:13 http://ru.archive.ubuntu.com/ubuntu focal-updates/main amd64 c-n-f Metadata [14,5 kB]
+Пол:14 http://ru.archive.ubuntu.com/ubuntu focal-updates/universe amd64 Packages [876 kB]
+Пол:15 http://security.ubuntu.com/ubuntu focal-security/main amd64 DEP-11 Metadata [29,0 kB]
+Пол:16 http://security.ubuntu.com/ubuntu focal-security/universe amd64 DEP-11 Metadata [63,7 kB]
+Пол:17 http://security.ubuntu.com/ubuntu focal-security/multiverse amd64 DEP-11 Metadata [2 464 B]
+Пол:18 http://ru.archive.ubuntu.com/ubuntu focal-updates/universe i386 Packages [647 kB]
+Пол:19 http://ru.archive.ubuntu.com/ubuntu focal-updates/universe amd64 DEP-11 Metadata [356 kB]
+Пол:20 http://ru.archive.ubuntu.com/ubuntu focal-updates/multiverse amd64 DEP-11 Metadata [940 B]
+Пол:21 http://ru.archive.ubuntu.com/ubuntu focal-backports/universe amd64 DEP-11 Metadata [10,4 kB]
+Получено 5 045 kB за 2с (2 817 kB/s)
+Чтение списков пакетов… Готово
+alex@alex-VirtualBox:~$ sudo apt update
+Сущ:1 http://ru.archive.ubuntu.com/ubuntu focal InRelease
+Сущ:2 http://ru.archive.ubuntu.com/ubuntu focal-updates InRelease
+Сущ:3 http://ru.archive.ubuntu.com/ubuntu focal-backports InRelease
+Сущ:4 http://ppa.launchpad.net/nginx/stable/ubuntu focal InRelease
+Сущ:5 http://security.ubuntu.com/ubuntu focal-security InRelease
+Сущ:6 https://download.docker.com/linux/ubuntu focal InRelease
+Чтение списков пакетов… Готово
+Построение дерева зависимостей
+Чтение информации о состоянии… Готово
+Может быть обновлено 11 пакетов. Запустите «apt list --upgradable» для их показа.
+alex@alex-VirtualBox:~$ sudo apt install docker -y
+Чтение списков пакетов… Готово
+Построение дерева зависимостей
+Чтение информации о состоянии… Готово
+Следующие пакеты устанавливались автоматически и больше не требуются:
+  geoip-database libgeoip1 libnginx-mod-http-image-filter libnginx-mod-http-xslt-filter libnginx-mod-mail libnginx-mod-stream libnginx-mod-stream-geoip linux-headers-5.11.0-27-generic
+  linux-hwe-5.11-headers-5.11.0-27 linux-image-5.11.0-27-generic linux-modules-5.11.0-27-generic linux-modules-extra-5.11.0-27-generic nginx-common nginx-core
+Для их удаления используйте «sudo apt autoremove».
+Будут установлены следующие дополнительные пакеты:
+  wmdocker
+Следующие НОВЫЕ пакеты будут установлены:
+  docker wmdocker
+Обновлено 0 пакетов, установлено 2 новых пакетов, для удаления отмечено 0 пакетов, и 11 пакетов не обновлено.
+Необходимо скачать 14,3 kB архивов.
+После данной операции объём занятого дискового пространства возрастёт на 58,4 kB.
+Пол:1 http://ru.archive.ubuntu.com/ubuntu focal/universe amd64 wmdocker amd64 1.5-2 [13,0 kB]
+Пол:2 http://ru.archive.ubuntu.com/ubuntu focal/universe amd64 docker all 1.5-2 [1 316 B]
+Получено 14,3 kB за 0с (103 kB/s)
+Выбор ранее не выбранного пакета wmdocker.
+(Чтение базы данных … на данный момент установлен 238491 файл и каталог.)
+Подготовка к распаковке …/wmdocker_1.5-2_amd64.deb …
+Распаковывается wmdocker (1.5-2) …
+Выбор ранее не выбранного пакета docker.
+Подготовка к распаковке …/archives/docker_1.5-2_all.deb …
+Распаковывается docker (1.5-2) …
+Настраивается пакет wmdocker (1.5-2) …
+Настраивается пакет docker (1.5-2) …
+Обрабатываются триггеры для man-db (2.9.1-1) …
+alex@alex-VirtualBox:~$ sudo apt install docker.io -y
+Чтение списков пакетов… Готово
+Построение дерева зависимостей
+Чтение информации о состоянии… Готово
+Следующие пакеты устанавливались автоматически и больше не требуются:
+  geoip-database libgeoip1 libnginx-mod-http-image-filter libnginx-mod-http-xslt-filter libnginx-mod-mail libnginx-mod-stream libnginx-mod-stream-geoip linux-headers-5.11.0-27-generic
+  linux-hwe-5.11-headers-5.11.0-27 linux-image-5.11.0-27-generic linux-modules-5.11.0-27-generic linux-modules-extra-5.11.0-27-generic nginx-common nginx-core
+Для их удаления используйте «sudo apt autoremove».
+Будут установлены следующие дополнительные пакеты:
+  bridge-utils containerd git git-man liberror-perl pigz runc ubuntu-fan
+Предлагаемые пакеты:
+  ifupdown aufs-tools btrfs-progs cgroupfs-mount | cgroup-lite debootstrap docker-doc rinse zfs-fuse | zfsutils git-daemon-run | git-daemon-sysvinit git-doc git-el git-email git-gui gitk gitweb git-cvs
+  git-mediawiki git-svn
+Следующие НОВЫЕ пакеты будут установлены:
+  bridge-utils containerd docker.io git git-man liberror-perl pigz runc ubuntu-fan
+Обновлено 0 пакетов, установлено 9 новых пакетов, для удаления отмечено 0 пакетов, и 11 пакетов не обновлено.
+Необходимо скачать 79,6 MB архивов.
+После данной операции объём занятого дискового пространства возрастёт на 398 MB.
+Пол:1 http://ru.archive.ubuntu.com/ubuntu focal/universe amd64 pigz amd64 2.4-1 [57,4 kB]
+Пол:2 http://ru.archive.ubuntu.com/ubuntu focal/main amd64 bridge-utils amd64 1.6-2ubuntu1 [30,5 kB]
+Пол:3 http://ru.archive.ubuntu.com/ubuntu focal-updates/main amd64 runc amd64 1.0.1-0ubuntu2~20.04.1 [4 155 kB]
+Пол:4 http://ru.archive.ubuntu.com/ubuntu focal-updates/main amd64 containerd amd64 1.5.5-0ubuntu3~20.04.1 [33,0 MB]
+Пол:5 http://ru.archive.ubuntu.com/ubuntu focal-updates/universe amd64 docker.io amd64 20.10.7-0ubuntu5~20.04.2 [36,9 MB]
+Пол:6 http://ru.archive.ubuntu.com/ubuntu focal/main amd64 liberror-perl all 0.17029-1 [26,5 kB]
+Пол:7 http://ru.archive.ubuntu.com/ubuntu focal-updates/main amd64 git-man all 1:2.25.1-1ubuntu3.2 [884 kB]
+Пол:8 http://ru.archive.ubuntu.com/ubuntu focal-updates/main amd64 git amd64 1:2.25.1-1ubuntu3.2 [4 554 kB]
+Пол:9 http://ru.archive.ubuntu.com/ubuntu focal/main amd64 ubuntu-fan all 0.12.13 [34,5 kB]
+Получено 79,6 MB за 8с (10,4 MB/s)
+Предварительная настройка пакетов …
+Выбор ранее не выбранного пакета pigz.
+(Чтение базы данных … на данный момент установлен 238501 файл и каталог.)
+Подготовка к распаковке …/0-pigz_2.4-1_amd64.deb …
+Распаковывается pigz (2.4-1) …
+Выбор ранее не выбранного пакета bridge-utils.
+Подготовка к распаковке …/1-bridge-utils_1.6-2ubuntu1_amd64.deb …
+Распаковывается bridge-utils (1.6-2ubuntu1) …
+Выбор ранее не выбранного пакета runc.
+Подготовка к распаковке …/2-runc_1.0.1-0ubuntu2~20.04.1_amd64.deb …
+Распаковывается runc (1.0.1-0ubuntu2~20.04.1) …
+Выбор ранее не выбранного пакета containerd.
+Подготовка к распаковке …/3-containerd_1.5.5-0ubuntu3~20.04.1_amd64.deb …
+Распаковывается containerd (1.5.5-0ubuntu3~20.04.1) …
+Выбор ранее не выбранного пакета docker.io.
+Подготовка к распаковке …/4-docker.io_20.10.7-0ubuntu5~20.04.2_amd64.deb …
+Распаковывается docker.io (20.10.7-0ubuntu5~20.04.2) …
+Выбор ранее не выбранного пакета liberror-perl.
+Подготовка к распаковке …/5-liberror-perl_0.17029-1_all.deb …
+Распаковывается liberror-perl (0.17029-1) …
+Выбор ранее не выбранного пакета git-man.
+Подготовка к распаковке …/6-git-man_1%3a2.25.1-1ubuntu3.2_all.deb …
+Распаковывается git-man (1:2.25.1-1ubuntu3.2) …
+Выбор ранее не выбранного пакета git.
+Подготовка к распаковке …/7-git_1%3a2.25.1-1ubuntu3.2_amd64.deb …
+Распаковывается git (1:2.25.1-1ubuntu3.2) …
+Выбор ранее не выбранного пакета ubuntu-fan.
+Подготовка к распаковке …/8-ubuntu-fan_0.12.13_all.deb …
+Распаковывается ubuntu-fan (0.12.13) …
+Настраивается пакет runc (1.0.1-0ubuntu2~20.04.1) …
+Настраивается пакет liberror-perl (0.17029-1) …
+Настраивается пакет bridge-utils (1.6-2ubuntu1) …
+Настраивается пакет pigz (2.4-1) …
+Настраивается пакет git-man (1:2.25.1-1ubuntu3.2) …
+Настраивается пакет containerd (1.5.5-0ubuntu3~20.04.1) …
+Created symlink /etc/systemd/system/multi-user.target.wants/containerd.service → /lib/systemd/system/containerd.service.
+Настраивается пакет ubuntu-fan (0.12.13) …
+Created symlink /etc/systemd/system/multi-user.target.wants/ubuntu-fan.service → /lib/systemd/system/ubuntu-fan.service.
+Настраивается пакет docker.io (20.10.7-0ubuntu5~20.04.2) …
+Добавляется группа «docker» (GID 135) ...
+Готово.
+Created symlink /etc/systemd/system/multi-user.target.wants/docker.service → /lib/systemd/system/docker.service.
+Created symlink /etc/systemd/system/sockets.target.wants/docker.socket → /lib/systemd/system/docker.socket.
+Настраивается пакет git (1:2.25.1-1ubuntu3.2) …
+Обрабатываются триггеры для man-db (2.9.1-1) …
+Обрабатываются триггеры для systemd (245.4-4ubuntu3.13) …
+alex@alex-VirtualBox:~$
+
+
+
+
+# ******** Задание 3 ********
+alex@alex-VirtualBox:~$ sudo docker run -it ubuntu
+Unable to find image 'ubuntu:latest' locally
+latest: Pulling from library/ubuntu
+7b1a6ab2e44d: Pull complete
+Digest: sha256:626ffe58f6e7566e00254b638eb7e0f3b11d4da9675088f4781a50ae288f3322
+Status: Downloaded newer image for ubuntu:latest
+root@920c6da65a77:/#
+
+
+
+
+# ******** Задание 4 ********
+Server refused our key
+    ┌──────────────────────────────────────────────────────────────────────┐
+    │                 • MobaXterm Personal Edition v21.4 •                 │
+    │               (SSH client, X server and network tools)               │
+    │                                                                      │
+    │ ➤ SSH session to alex@172.16.160.172                                 │
+    │   • Direct SSH      :  ✔                                             │
+    │   • SSH compression :  ✔                                             │
+    │   • SSH-browser     :  ✔                                             │
+    │   • X11-forwarding  :  ✔  (remote display is forwarded through SSH)  │
+    │                                                                      │
+    │ ➤ For more info, ctrl+click on help or visit our website.            │
+    └──────────────────────────────────────────────────────────────────────┘
+
+Welcome to Ubuntu 20.04.3 LTS (GNU/Linux 5.11.0-40-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+12 updates can be applied immediately.
+4 of these updates are standard security updates.
+Чтобы просмотреть дополнительные обновления выполните: apt list --upgradable
+
+Your Hardware Enablement Stack (HWE) is supported until April 2025.
+Last login: Fri Nov 19 16:43:23 2021 from 172.16.160.27
+alex@alex-VirtualBox:~$ cat > Dockerfile
+FROM ubuntu:latest
+MAINTAINER GB_student
+RUN apt-get update
+RUN apt-get install nginx -y
+RUN apt-get install php-fpm -y
+RUN mkdir /run/php-fpm
+VOLUME "/var/www/html"
+EXPOSE 80
+CMD /usr/sbin/nginx -g "daemon off;" ; php-fpm -D
+alex@alex-VirtualBox:~$ sudo docker build -t php_fpm .
+[sudo] пароль для alex:
+Sending build context to Docker daemon  128.4MB
+Step 1/9 : FROM ubuntu:latest
+ ---> ba6acccedd29
+Step 2/9 : MAINTAINER GB_student
+ ---> Running in f8c97f9e533f
+
+# тут была гора строк, удалил лишнее
+
+Successfully built 9a2bf8085350
+Successfully tagged php_fpm:latest
+alex@alex-VirtualBox:~$

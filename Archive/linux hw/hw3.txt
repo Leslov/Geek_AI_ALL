@@ -1,0 +1,347 @@
+Session stopped
+    - Press <return> to exit tab
+    - Press R to restart session
+    - Press S to save terminal output to file
+Server refused our key
+    ┌──────────────────────────────────────────────────────────────────────┐
+    │                 • MobaXterm Personal Edition v21.4 •                 │
+    │               (SSH client, X server and network tools)               │
+    │                                                                      │
+    │ ➤ SSH session to alex@172.16.160.172                                 │
+    │   • Direct SSH      :  ✔                                             │
+    │   • SSH compression :  ✔                                             │
+    │   • SSH-browser     :  ✔                                             │
+    │   • X11-forwarding  :  ✔  (remote display is forwarded through SSH)  │
+    │                                                                      │
+    │ ➤ For more info, ctrl+click on help or visit our website.            │
+    └──────────────────────────────────────────────────────────────────────┘
+
+Welcome to Ubuntu 20.04.3 LTS (GNU/Linux 5.11.0-38-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+60 updates can be applied immediately.
+Чтобы просмотреть дополнительные обновления выполните: apt list --upgradable
+
+Your Hardware Enablement Stack (HWE) is supported until April 2025.
+Last login: Mon Nov  1 10:26:14 2021 from 172.16.160.27
+
+
+# **** Задание 1 ****
+
+
+alex@alex-VirtualBox:~$ sudo useradd user1
+[sudo] пароль для alex:
+alex@alex-VirtualBox:~$ users
+alex alex
+alex@alex-VirtualBox:~$ sudo useradd user1
+useradd: пользователь «user1» уже существует
+alex@alex-VirtualBox:~$ su user1
+Пароль:
+su: Сбой при проверке подлинности
+alex@alex-VirtualBox:~$ sudo passwd user1
+Новый пароль :
+Повторите ввод нового пароля :
+passwd: пароль успешно обновлён
+alex@alex-VirtualBox:~$ su user1
+Пароль:
+$ whoami
+user1
+$ exit
+alex@alex-VirtualBox:~$ sudo deluser user1
+Удаляется пользователь «user1» ...
+Предупреждение: в группе `user1' больше никого нет.
+Готово.
+alex@alex-VirtualBox:~$ su user1
+su: пользователь user1 не существует
+alex@alex-VirtualBox:~$
+
+
+
+# **** Задание 2 ****
+
+
+
+alex@alex-VirtualBox:~$ sudo groupadd developers
+[sudo] пароль для alex:
+alex@alex-VirtualBox:~$ groups alex
+alex : alex adm cdrom sudo dip plugdev lpadmin lxd sambashare
+alex@alex-VirtualBox:~$ sudo usermod alex -aG developers
+alex@alex-VirtualBox:~$ groups alex
+alex : alex adm cdrom sudo dip plugdev lpadmin lxd sambashare developers
+alex@alex-VirtualBox:~$ sudo usermod alex --help
+Использование: usermod [параметры] ПОЛЬЗОВАТЕЛЬ
+
+Параметры:
+  -b, --badnames                allow bad names
+  -c, --comment КОММЕНТАРИЙ     новое значение поля GECOS
+  -d, --home ДОМ_КАТ            новый домашний каталог учётной записи
+  -e, --expiredate ДАТА_УСТ     установить дату окончания действия
+                                учётной записи в ДАТА_УСТ
+  -f, --inactive НЕАКТИВНОСТЬ   установить период неактивности пароля после
+                                устаревания учётной записи равным НЕАКТИВНОСТЬ
+  -g, --gid ГРУППА              принудительно назначить первичную ГРУППУ
+  -G, --groups ГРУППЫ           список дополнительных ГРУПП
+  -a, --append                  добавить пользователя в дополнительные
+                                ГРУППЫ, указанные в параметре -G не удаляя
+                                пользователя из других групп
+  -h, --help                    показать данное сообщение и закончить работу
+  -l, --login НОВОЕ_ИМЯ         новое значение имени учётной записи
+  -L, --lock                    заблокировать учётную запись
+  -m, --move-home               переместить содержимое домашнего каталога в
+                                новое место (использовать только вместе с -d)
+  -o, --non-unique              разрешить создание учётной записи с уже
+                                имеющимся (не уникальным) UID
+  -p, --password ПАРОЛЬ         задать новый шифрованный пароль для
+                                учётной записи
+  -R, --root КАТ_CHROOT         каталог, в который выполняется chroot
+  -P, --prefix PREFIX_DIR       prefix directory where are located the /etc/* files
+  -s, --shell ОБОЛОЧКА          новая регистрационная оболочка для учётной
+                                записи
+  -u, --uid UID                 новый UID для учётной записи
+  -U, --unlock                  разблокировать учётную запись
+  -v, --add-subuids ПЕРВ-ПОСЛ   добавить диапазон подчинённых uid
+  -V, --del-subuids ПЕРВ-ПОСЛ   удалить диапазон подчинённых uid
+  -w, --add-subgids ПЕРВ-ПОСЛ   добавить диапазон подчинённых gid
+  -W, --del-subgids ПЕРВ-ПОСЛ   удалить диапазон подчинённых gid
+  -Z, --selinux-user SEUSER     новое пользовательское сопоставление
+                                SELinux для учётной записи
+
+alex@alex-VirtualBox:~$ sudo deluser alex developers
+Удаляется пользователь «alex» из группы «developers» ...
+Готово.
+alex@alex-VirtualBox:~$ groups alex
+alex : alex adm cdrom sudo dip plugdev lpadmin lxd sambashare
+alex@alex-VirtualBox:~$
+
+
+
+# **** Задание 3 ****
+
+
+alex@alex-VirtualBox:~$ sudo useradd --help
+Использование: useradd [параметры] ПОЛЬЗОВАТЕЛЬ
+               useradd -D
+               useradd -D [параметры]
+
+Параметры:
+      --badnames                do not check for bad names
+  -b, --base-dir БАЗ_КАТ        базовый каталог для домашнего каталога новой
+                                учётной записи
+      --btrfs-subvolume-home    use BTRFS subvolume for home directory
+  -c, --comment КОММЕНТАРИЙ     поле GECOS новой учётной записи
+  -d, --home-dir ДОМ_КАТ        домашний каталог новой учётной записи
+  -D, --defaults                показать или изменить настройки
+                                по умолчанию для useradd
+  -e, --expiredate ДАТА_УСТ     дата устаревания новой учётной записи
+  -f, --inactive НЕАКТИВНОСТЬ   период неактивности пароля новой учётной записи
+  -g, --gid ГРУППА              имя или ID первичной группы новой
+                                учётной записи
+  -G, --groups ГРУППЫ           список дополнительных групп новой
+                                учётной записи
+  -h, --help                    показать данное сообщение и закончить работу
+  -k, --skel КАБ_ШАБ            использовать альтернативный каталог с шаблонами
+  -K, --key КЛЮЧ=ЗНАЧЕНИЕ       заменить значение по умолчанию
+                                из /etc/login.defs
+  -l, --no-log-init             не добавлять пользователя в базы данных lastlog и
+                                faillog
+  -m, --create-home             создать домашний каталог пользователя
+  -M, --no-create-home          не создавать домашний каталог пользователя
+  -N, --no-user-group           не создавать группу с тем же именем что и у
+                                пользователя
+  -o, --non-unique              разрешить создание пользователей с
+                                повторяющимися (не уникальными) UID
+  -p, --password ПАРОЛЬ         зашифрованный пароль новой учётной записи
+  -r, --system                  создавать системную группу
+  -R, --root КАТ_CHROOT         каталог, в который выполняется chroot
+  -P, --prefix PREFIX_DIR       prefix directory where are located the /etc/* files
+  -s, --shell ОБОЛОЧКА          регистрационная оболочка новой
+                                учётной записи
+  -u, --uid UID                 пользовательский ID новой учётной записи
+  -U, --user-group              создать группу с тем же именем что и у
+                                пользователя
+  -Z, --selinux-user SEUSER     использовать указанного SEUSER для
+                                пользовательского сопоставления SELinux
+      --extrausers              Use the extra users database
+
+alex@alex-VirtualBox:~$ sudo useradd likeaGod -g sudo
+alex@alex-VirtualBox:~$ groups likeagod
+groups: «likeagod»: такого пользователя нет
+alex@alex-VirtualBox:~$ groups likeaGod
+likeaGod : sudo
+alex@alex-VirtualBox:~$ passwd likeaGod
+passwd: вы не можете посмотреть или изменить пароль likeaGod.
+alex@alex-VirtualBox:~$ sudo passwd likeaGod
+Новый пароль :
+Повторите ввод нового пароля :
+passwd: пароль успешно обновлён
+alex@alex-VirtualBox:~$ su likeaGod
+Пароль:
+$ whoami
+likeaGod
+$ sudo apt update
+[sudo] пароль для likeaGod:
+Сущ:1 http://ru.archive.ubuntu.com/ubuntu focal InRelease
+Сущ:2 http://ru.archive.ubuntu.com/ubuntu focal-updates InRelease
+Сущ:3 http://ru.archive.ubuntu.com/ubuntu focal-backports InRelease
+Пол:4 http://security.ubuntu.com/ubuntu focal-security InRelease [114 kB]
+Пол:5 http://security.ubuntu.com/ubuntu focal-security/main amd64 DEP-11 Metadata [29,0 kB]
+Пол:6 http://security.ubuntu.com/ubuntu focal-security/universe amd64 DEP-11 Metadata [63,5 kB]
+Пол:7 http://security.ubuntu.com/ubuntu focal-security/multiverse amd64 DEP-11 Metadata [2 464 B]
+Получено 209 kB за 2с (114 kB/s)
+Чтение списков пакетов… Готово
+Построение дерева зависимостей
+Чтение информации о состоянии… Готово
+Может быть обновлено 60 пакетов. Запустите «apt list --upgradable» для их показа.
+$
+
+
+
+# **** Задание 4 ****
+
+
+
+alex@alex-VirtualBox:~$ sudo adduser Max
+adduser: Пожалуйста, введите имя пользователя соответствующее регулярному
+выражению, настроенному через переменную NAME_REGEX[_SYSTEM].
+Используйте параметр `--force-badname', чтобы нивелировать
+эту проверку или повторно настроить NAME_REGEX.
+alex@alex-VirtualBox:~$ sudo adduser max
+Добавляется пользователь «max» ...
+Добавляется новая группа «max» (1004) ...
+Добавляется новый пользователь «max» (1002) в группу «max» ...
+Создаётся домашний каталог «/home/max» ...
+Копирование файлов из «/etc/skel» ...
+Новый пароль :
+Повторите ввод нового пароля :
+passwd: пароль успешно обновлён
+Изменение информации о пользователе max
+Введите новое значение или нажмите ENTER для выбора значения по умолчанию
+        Полное имя []:
+        Номер комнаты []:
+        Рабочий телефон []:
+        Домашний телефон []:
+        Другое []:
+Данная информация корректна? [Y/n]
+alex@alex-VirtualBox:~$ sudo addgroup user_admin
+Добавляется группа «user_admin» (GID 1005) ...
+Готово.
+alex@alex-VirtualBox:~$ sudo visudo
+[sudo] пароль для alex:
+alex@alex-VirtualBox:~$ users
+alex alex
+alex@alex-VirtualBox:~$ groups max
+max : max
+alex@alex-VirtualBox:~$ sudo group max user_admin
+sudo: group: команда не найдена
+alex@alex-VirtualBox:~$ sudo groupadd --help
+Использование: groupadd [параметры] ГРУППА
+
+Параметры:
+  -f, --force                   закончить работу без ошибки, если группа
+                                существует и отменить -g, если GID уже
+                                используется
+  -g, --gid GID                 для новой группы использовать указанный GID
+  -h, --help                    показать данное сообщение и закончить работу
+  -K, --key КЛЮЧ=ЗНАЧЕНИЕ       заменить значение по умолчанию
+                                из /etc/login.defs
+  -o, --non-unique              разрешить создание групп с повторяющимся
+                                (не уникальным) GID
+  -p, --password ПАРОЛЬ         использовать этот шифрованный пароль для
+                                новой группы
+  -r, --system                  создавать системную группу
+  -R, --root КАТ_CHROOT         каталог, в который выполняется chroot
+  -P, --prefix PREFIX_DIR       directory prefix
+      --extrausers              Use the extra users database
+
+alex@alex-VirtualBox:~$ sudo usermod max -aG user_admin
+alex@alex-VirtualBox:~$ groups max
+max : max user_admin
+alex@alex-VirtualBox:~$ su max
+Пароль:
+max@alex-VirtualBox:/home/alex$ sudo adduser user1
+[sudo] пароль для max:
+Пользователю max запрещено выполнять '/usr/sbin/adduser user1' с правами root на alex-VirtualBox.
+max@alex-VirtualBox:/home/alex$ sudo apt update
+[sudo] пароль для max:
+Пользователю max запрещено выполнять '/usr/bin/apt update' с правами root на alex-VirtualBox.
+max@alex-VirtualBox:/home/alex$ sudo apt-get update
+[sudo] пароль для max:
+Пользователю max запрещено выполнять '/usr/bin/apt-get update' с правами root на alex-VirtualBox.
+max@alex-VirtualBox:/home/alex$ exit
+exit
+alex@alex-VirtualBox:~$ sudo visudo
+alex@alex-VirtualBox:~$ su max
+Пароль:
+max@alex-VirtualBox:/home/alex$ sudo useradd user2
+[sudo] пароль для max:
+Пользователю max запрещено выполнять '/usr/sbin/useradd user2' с правами root на alex-VirtualBox.
+max@alex-VirtualBox:/home/alex$ exit
+exit
+alex@alex-VirtualBox:~$ sudo visudo
+alex@alex-VirtualBox:~$ su max
+Пароль:
+max@alex-VirtualBox:/home/alex$ sudo useradd user2
+[sudo] пароль для max:
+max@alex-VirtualBox:/home/alex$ sudo passwd user2
+Пользователю max запрещено выполнять '/usr/bin/passwd user2' с правами root на alex-VirtualBox.
+max@alex-VirtualBox:/home/alex$ exit
+exit
+alex@alex-VirtualBox:~$ sudo visudo
+alex@alex-VirtualBox:~$ su max
+Пароль:
+max@alex-VirtualBox:/home/alex$ sudo passwd user2
+Новый пароль :
+Повторите ввод нового пароля :
+passwd: пароль успешно обновлён
+max@alex-VirtualBox:/home/alex$ su user2
+Пароль:
+$ whoami
+user2
+$ exit
+max@alex-VirtualBox:/home/alex$ exit
+exit
+alex@alex-VirtualBox:~$
+
+
+
+# *** Файл visudo: ****
+#
+# This file MUST be edited with the 'visudo' command as root.
+#
+# Please consider adding local content in /etc/sudoers.d/ instead of
+# directly modifying this file.
+#
+# See the man page for details on how to write a sudoers file.
+#
+Defaults        env_reset
+Defaults        mail_badpass
+Defaults        secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin"
+
+# Host alias specification
+
+# User alias specification
+
+# Cmnd alias specification
+
+# User privilege specification
+root    ALL=(ALL:ALL) ALL
+
+# Members of the admin group may gain root privileges
+%admin ALL=(ALL) ALL
+
+# Группа для пользователей с правами управления пользователями
+%user_admin ALL=/usr/sbin/useradd, /usr/sbin/usermod, /usr/sbin/deluser, /usr/bin/passwd
+
+# Allow members of group sudo to execute any command
+%sudo   ALL=(ALL:ALL) ALL
+
+# See sudoers(5) for more information on "#include" directives:
+
+#includedir /etc/sudoers.d
+
+# **** END visudo *****
+
+

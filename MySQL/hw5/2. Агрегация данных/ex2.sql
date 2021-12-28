@@ -1,0 +1,1 @@
+SELECT COUNT(*), DAYNAME(DATE_FORMAT(Birthday, CONCAT(YEAR(NOW()),'-%m-%d'))) as DoW_num FROM profiles GROUP BY DoW_num;

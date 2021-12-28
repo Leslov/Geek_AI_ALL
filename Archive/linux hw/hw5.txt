@@ -1,0 +1,240 @@
+# ******** Задание 1 ********
+
+alex@alex-VirtualBox:~/delme$ echo hello > file1
+alex@alex-VirtualBox:~/delme$ cp file1 file2
+alex@alex-VirtualBox:~/delme$ ln -s file3 file1
+ln: не удалось создать символьную ссылку 'file1': Файл существует
+alex@alex-VirtualBox:~/delme$ ln -s file1 file3
+alex@alex-VirtualBox:~/delme$ ln file1 file4
+alex@alex-VirtualBox:~/delme$ ll
+итого 20
+drwxrw-r-T  2 alex alex 4096 ноя  9 10:04 ./
+drwxr-xr-x 18 alex alex 4096 ноя  9 08:30 ../
+-rw-rw-r--  2 alex alex    6 ноя  9 10:02 file1
+-rw-rw-r--  1 alex alex    6 ноя  9 10:03 file2
+lrwxrwxrwx  1 alex alex    5 ноя  9 10:04 file3 -> file1
+-rw-rw-r--  2 alex alex    6 ноя  9 10:02 file4
+alex@alex-VirtualBox:~/delme$ cat file3
+hello
+alex@alex-VirtualBox:~/delme$ rm file1
+alex@alex-VirtualBox:~/delme$ ll -l
+итого 16
+drwxrw-r-T  2 alex alex 4096 ноя  9 10:06 ./
+drwxr-xr-x 18 alex alex 4096 ноя  9 08:30 ../
+-rw-rw-r--  1 alex alex    6 ноя  9 10:03 file2
+lrwxrwxrwx  1 alex alex    5 ноя  9 10:04 file3 -> file1
+-rw-rw-r--  1 alex alex    6 ноя  9 10:02 file4
+# После удаления файла мягкая ссылка сломалась, остальные файлы работают как прежде. 
+# Жесткая ссылка работает, т.к. физический файл не был удален, было удалено только имя. 
+# Копии вообще чихать на манипуляции с другим файлом.
+# Забыл прочекать inode у файлов. Сделал бы это командой ll с параметром -i. 
+# inode был бы одинаковым у жесткой ссылки и оригинального файла. У всего остального inode был бы свой
+
+
+# ******** Задание 2 ********
+alex@alex-VirtualBox:~/delme$ mv file2 file1
+alex@alex-VirtualBox:~/delme$ ll
+итого 16
+drwxrw-r-T  2 alex alex 4096 ноя  9 10:09 ./
+drwxr-xr-x 18 alex alex 4096 ноя  9 08:30 ../
+-rw-rw-r--  1 alex alex    6 ноя  9 10:03 file1
+lrwxrwxrwx  1 alex alex    5 ноя  9 10:04 file3 -> file1
+-rw-rw-r--  1 alex alex    6 ноя  9 10:02 file4
+alex@alex-VirtualBox:~/delme$ ln -s file1 file1_link_soft
+alex@alex-VirtualBox:~/delme$ ll
+итого 16
+drwxrw-r-T  2 alex alex 4096 ноя  9 10:18 ./
+drwxr-xr-x 18 alex alex 4096 ноя  9 08:30 ../
+-rw-rw-r--  1 alex alex    6 ноя  9 10:03 file1
+lrwxrwxrwx  1 alex alex    5 ноя  9 10:18 file1_link_soft -> file1
+lrwxrwxrwx  1 alex alex    5 ноя  9 10:04 file3 -> file1
+-rw-rw-r--  1 alex alex    6 ноя  9 10:02 file4
+# Цель - перенести только ссылки в директорию tempdir (все файлы, кроме file1)
+alex@alex-VirtualBox:~/delme$ mv file3 file1_link_soft2
+alex@alex-VirtualBox:~/delme$ mv file4 file1_backup
+alex@alex-VirtualBox:~/delme$ mkdir tempdir
+alex@alex-VirtualBox:~/delme$ mv -file1 tempdir
+mv: неверный ключ — «l»
+По команде «mv --help» можно получить дополнительную информацию.
+alex@alex-VirtualBox:~/delme$ mv * tempdir
+mv: невозможно перенести 'tempdir' в свой собственный подкаталог, 'tempdir/tempdir'
+alex@alex-VirtualBox:~/delme$ mv * /tempdir
+mv: невозможно переместить 'tempdir' в '/tempdir': Отказано в доступе
+alex@alex-VirtualBox:~/delme$ mv (file*&!file1) /tempdir
+-bash: !file1: event not found
+alex@alex-VirtualBox:~/delme$ mv (file*)&!(file1) /tempdir
+-bash: синтаксическая ошибка рядом с неожиданным маркером «file*»
+# После косячных, бесплодных попыток вернул файлы обратно в ту же директорию.
+# Ниже команда для переноса только файлов (без каталогов) кроме файла file1 в папку tempdir используя pipeline
+alex@alex-VirtualBox:~/delme$ ls -p | grep -Ev '/|file1$' | xargs -I '{}' mv {} tempdir
+alex@alex-VirtualBox:~/delme$ ll
+итого 16
+drwxrw-r-T  3 alex alex 4096 ноя  9 10:45 ./
+drwxr-xr-x 18 alex alex 4096 ноя  9 08:30 ../
+-rw-rw-r--  1 alex alex    6 ноя  9 10:03 file1
+drwxrwxr-x  2 alex alex 4096 ноя  9 10:45 tempdir/
+alex@alex-VirtualBox:~/delme$ cd tempdir
+alex@alex-VirtualBox:~/delme/tempdir$ ll
+итого 12
+drwxrwxr-x 2 alex alex 4096 ноя  9 10:45 ./
+drwxrw-r-T 3 alex alex 4096 ноя  9 10:45 ../
+-rw-rw-r-- 1 alex alex    6 ноя  9 10:02 file1_backup
+lrwxrwxrwx 1 alex alex    5 ноя  9 10:18 file1_link_soft -> file1
+lrwxrwxrwx 1 alex alex    5 ноя  9 10:04 file1_link_soft2 -> file1
+# Мягкие ссылки естественно сломались, т.к. в них был прописан относительный путь
+
+
+# ******** Задание 3 ********
+alex@alex-VirtualBox:~/delme/tempdir$cd ..
+alex@alex-VirtualBox:~/delme$ rm -rf *
+alex@alex-VirtualBox:~/delme$ echo helloworld > file.pub
+alex@alex-VirtualBox:~/delme$ echo hello my user > file.priv
+alex@alex-VirtualBox:~/delme$ chmod 664 file.pub
+alex@alex-VirtualBox:~/delme$ ll
+итого 16
+drwxrw-r-T  2 alex alex 4096 ноя  9 10:55 ./
+drwxr-xr-x 18 alex alex 4096 ноя  9 08:30 ../
+-rw-rw-r--  1 alex alex   14 ноя  9 10:55 file.priv
+-rw-rw-r--  1 alex alex   11 ноя  9 10:54 file.pub
+alex@alex-VirtualBox:~/delme$ chmod ug=rw file.priv
+alex@alex-VirtualBox:~/delme$ ll
+итого 16
+drwxrw-r-T  2 alex alex 4096 ноя  9 10:55 ./
+drwxr-xr-x 18 alex alex 4096 ноя  9 08:30 ../
+-rw-rw-r--  1 alex alex   14 ноя  9 10:55 file.priv
+-rw-rw-r--  1 alex alex   11 ноя  9 10:54 file.pub
+alex@alex-VirtualBox:~/delme$ chmod 600 file.priv
+alex@alex-VirtualBox:~/delme$ ll
+итого 16
+drwxrw-r-T  2 alex alex 4096 ноя  9 10:55 ./
+drwxr-xr-x 18 alex alex 4096 ноя  9 08:30 ../
+-rw-------  1 alex alex   14 ноя  9 10:55 file.priv
+-rw-rw-r--  1 alex alex   11 ноя  9 10:54 file.pub
+
+
+# ******** Задание 4 ********
+alex@alex-VirtualBox:~/delme$ addgroup developer
+addgroup: Только суперпользователь может добавить пользователя или группу в систему.
+alex@alex-VirtualBox:~/delme$ sudo addgroup developer
+[sudo] пароль для alex:
+Добавляется группа «developer» (GID 1007) ...
+Готово.
+alex@alex-VirtualBox:~/delme$ sudo usermod -aG alex developer
+usermod: пользователь «developer» не существует
+alex@alex-VirtualBox:~/delme$ sudo usermod -aG developer alex
+alex@alex-VirtualBox:~/delme$ sudo adduser tempuser
+Добавляется пользователь «tempuser» ...
+Добавляется новая группа «tempuser» (1008) ...
+Добавляется новый пользователь «tempuser» (1004) в группу «tempuser» ...
+Создаётся домашний каталог «/home/tempuser» ...
+Копирование файлов из «/etc/skel» ...
+Новый пароль :
+Повторите ввод нового пароля :
+passwd: пароль успешно обновлён
+Изменение информации о пользователе tempuser
+Введите новое значение или нажмите ENTER для выбора значения по умолчанию
+        Полное имя []:
+        Номер комнаты []:
+        Рабочий телефон []:
+        Домашний телефон []:
+        Другое []:
+Данная информация корректна? [Y/n] y
+alex@alex-VirtualBox:~/delme$ sudo usermod -aG developer tempuser
+alex@alex-VirtualBox:~/delme$ mkdir shared_work
+alex@alex-VirtualBox:~/delme$ ll
+итого 20
+drwxrw-r-T  3 alex alex 4096 ноя  9 11:07 ./
+drwxr-xr-x 18 alex alex 4096 ноя  9 08:30 ../
+-rw-------  1 alex alex   14 ноя  9 10:55 file.priv
+-rw-rw-r--  1 alex alex   11 ноя  9 10:54 file.pub
+drwxrwxr-x  2 alex alex 4096 ноя  9 11:07 shared_work/
+alex@alex-VirtualBox:~/delme$ chown :developer shared_work
+chown: изменение группы для 'shared_work': Операция не позволена
+alex@alex-VirtualBox:~/delme$ sudo chown :developer shared_work
+alex@alex-VirtualBox:~/delme$ chmod 770 shared_work
+alex@alex-VirtualBox:~/delme$ ll
+итого 20
+drwxrw-r-T  3 alex alex      4096 ноя  9 11:07 ./
+drwxr-xr-x 18 alex alex      4096 ноя  9 08:30 ../
+-rw-------  1 alex alex        14 ноя  9 10:55 file.priv
+-rw-rw-r--  1 alex alex        11 ноя  9 10:54 file.pub
+drwxrwx---  2 alex developer 4096 ноя  9 11:07 shared_work/
+alex@alex-VirtualBox:~/delme$
+
+
+# ******** Задание 5 ********
+alex@alex-VirtualBox:~/delme$ cd shared_work
+alex@alex-VirtualBox:~/delme/shared_work$ mkdir shared_files
+alex@alex-VirtualBox:~/delme/shared_work$ ll
+итого 12
+drwxrwx--- 3 alex developer 4096 ноя  9 11:12 ./
+drwxrw-r-T 3 alex alex      4096 ноя  9 11:07 ../
+drwxrwxr-x 2 alex alex      4096 ноя  9 11:12 shared_files/
+alex@alex-VirtualBox:~/delme/shared_work$ chown :developer shared_files
+chown: изменение группы для 'shared_files': Операция не позволена
+alex@alex-VirtualBox:~/delme/shared_work$ sudo chown :developer shared_files
+alex@alex-VirtualBox:~/delme/shared_work$ chmod 750 shared_files
+alex@alex-VirtualBox:~/delme/shared_work$ ll
+итого 12
+drwxrwx--- 3 alex developer 4096 ноя  9 11:12 ./
+drwxrw-r-T 3 alex alex      4096 ноя  9 11:07 ../
+drwxr-x--- 2 alex developer 4096 ноя  9 11:12 shared_files/
+alex@alex-VirtualBox:~/delme/shared_work$ cd shared_files
+alex@alex-VirtualBox:~/delme/shared_work/shared_files$ touch file1
+alex@alex-VirtualBox:~/delme/shared_work/shared_files$ cd ..
+
+
+
+# ******** Задание 6 ********
+alex@alex-VirtualBox:~/delme/shared_work$ mkdir hidden_files
+alex@alex-VirtualBox:~/delme/shared_work$ sudo chown :developer hidden_files
+alex@alex-VirtualBox:~/delme/shared_work$ chmod 330 hidden_files
+alex@alex-VirtualBox:~/delme/shared_work$ cd hidden_files
+alex@alex-VirtualBox:~/delme/shared_work/hidden_files$ touch file1
+alex@alex-VirtualBox:~/delme/shared_work/hidden_files$ ls
+ls: невозможно открыть каталог '.': Отказано в доступе
+alex@alex-VirtualBox:~/delme/shared_work/hidden_files$ echo hello > file1
+alex@alex-VirtualBox:~/delme/shared_work/hidden_files$ cat file1
+hello
+alex@alex-VirtualBox:~/delme/shared_work/hidden_files$ ll
+ls: невозможно открыть каталог '.': Отказано в доступе
+
+
+# ******** Проверяем удаление файлов другим юзером ********
+alex@alex-VirtualBox:~/delme/shared_work$ su tempuser
+Пароль:
+tempuser@alex-VirtualBox:/home/alex/delme/shared_work$ ll
+итого 16
+drwxrwx--- 4 alex developer 4096 ноя  9 11:21 ./
+drwxrw-r-T 3 alex alex      4096 ноя  9 11:07 ../
+-rw-rw-r-- 1 alex alex         0 ноя  9 11:21 file1
+d-wx-wx--- 2 alex developer 4096 ноя  9 11:17 hidden_files/
+drwxr-x--- 2 alex developer 4096 ноя  9 11:19 shared_files/
+tempuser@alex-VirtualBox:/home/alex/delme/shared_work$ rm file1
+rm: удалить защищённый от записи пустой обычный файл 'file1'?
+tempuser@alex-VirtualBox:/home/alex/delme/shared_work$ ll
+итого 16
+drwxrwx--- 4 alex developer 4096 ноя  9 11:21 ./
+drwxrw-r-T 3 alex alex      4096 ноя  9 11:07 ../
+-rw-rw-r-- 1 alex alex         0 ноя  9 11:21 file1
+d-wx-wx--- 2 alex developer 4096 ноя  9 11:17 hidden_files/
+drwxr-x--- 2 alex developer 4096 ноя  9 11:19 shared_files/
+tempuser@alex-VirtualBox:/home/alex/delme/shared_work$ rm file1
+rm: удалить защищённый от записи пустой обычный файл 'file1'? y
+tempuser@alex-VirtualBox:/home/alex/delme/shared_work$
+tempuser@alex-VirtualBox:/home/alex/delme/shared_work$ ll
+итого 16
+drwxrwx--- 4 alex developer 4096 ноя  9 11:22 ./
+drwxrw-r-T 3 alex alex      4096 ноя  9 11:07 ../
+d-wx-wx--- 2 alex developer 4096 ноя  9 11:17 hidden_files/
+drwxr-x--- 2 alex developer 4096 ноя  9 11:19 shared_files/
+tempuser@alex-VirtualBox:/home/alex/delme/shared_work$ cd shared_files
+tempuser@alex-VirtualBox:/home/alex/delme/shared_work/shared_files$ ll
+итого 8
+drwxr-x--- 2 alex developer 4096 ноя  9 11:19 ./
+drwxrwx--- 4 alex developer 4096 ноя  9 11:22 ../
+-rw-rw-r-- 1 alex alex         0 ноя  9 11:19 file1
+tempuser@alex-VirtualBox:/home/alex/delme/shared_work/shared_files$ rm file1
+rm: удалить защищённый от записи пустой обычный файл 'file1'? y
+rm: невозможно удалить 'file1': Отказано в доступе
+tempuser@alex-VirtualBox:/home/alex/delme/shared_work/shared_files$

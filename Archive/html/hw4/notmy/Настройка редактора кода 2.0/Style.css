@@ -1,0 +1,80 @@
+
+body{
+ background-color: #f8f8f8;
+}
+.menu{
+    font-family:fantasy;
+    font-size: 14px;
+    list-style-type: none;
+}
+.description{
+    color:black;
+    font-size: 18px;
+    font-weight: 400px;
+    background-color: #eaeaea;
+}
+#heading-1{
+    color: #707070;
+    font-size: 14px;
+    font-style: italic;
+    line-height: 16px;
+}
+#heading-2{
+    color:#696969;
+    font-size: 14px;
+    font-style: oblique;
+    list-style-image: url(img/premium-icon-minigolf-3340113.png);
+}
+#heading-3{
+    color: #484343;
+    font-size: 16px;
+    font-weight: 400px;
+    line-height: 24px;
+    text-align: left;
+}
+.form-1 {
+    color:darkgreen;
+    font-family: fantasy;
+}
+.form-1 input[type=text]{
+    background-color: palegreen;
+    color: darkgreen;
+    width: 250px;
+    height: 20px;
+    font-style: italic;
+    font-size: 16px;
+}
+.img{
+    outline: 4px solid yellowgreen;
+}
+
+.menu li a:hover{
+    color:red
+}
+.menu li a:active {    
+color: green
+}
+div {
+    border: 2px solid greenyellow
+}
+
+.form-1 input[type=text]:nth-child(3) {
+    color: forestgreen;
+    background-color: floralwhite;
+}
+.form-1 input[type=text] {
+     text-transform: capitalize; 
+}
+.img:hover{
+    outline: none
+}
+table {
+    border: 2px solid green;
+    width: 400px;
+    height: 200px;
+    border-spacing: 5px;
+}
+table td {
+    border: 1px solid yellowgreen;
+    text-align: center
+}

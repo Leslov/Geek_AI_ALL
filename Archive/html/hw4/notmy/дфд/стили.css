@@ -1,0 +1,48 @@
+.header a:hover {
+    color: chartreuse;
+}
+img {
+    height: 200px;
+    
+}
+.footer {
+    height: 300px;
+
+    
+}
+.header {
+    height: 500px;
+    border: 1px solid #000;
+}
+.katalog {
+    height: 150px;
+    border: 1px solid #000;
+}
+.text  {
+    height: 500px;
+    border: 1px solid #000;
+}
+.footer {
+    height: 300px;
+    border: 1px solid #000;
+}
+
+.teh table{
+    width: 500px;
+    height: 150px;
+    
+}
+.teh tr {
+    border: 1px solid #000;
+}
+.teh td {
+    border: 1px solid #000;
+}
+input{
+    text-transform: capitalize;  
+  }
+input.active:focus,
+textarea.active:focus {
+  background-color: red;
+  color: rgb(255, 255, 255);
+}  

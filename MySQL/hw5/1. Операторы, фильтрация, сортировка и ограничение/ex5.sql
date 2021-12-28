@@ -1,0 +1,1 @@
+SELECT ID FROM catalogs WHERE ID IN (5, 1, 2) ORDER BY FIELD(ID, 5, 1, 2);

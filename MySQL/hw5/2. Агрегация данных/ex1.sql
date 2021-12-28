@@ -1,0 +1,1 @@
+SELECT AVG(DATE_FORMAT(FROM_DAYS(TO_DAYS(NOW())- TO_DAYS(Birthday)), '%Y')) FROM `profiles`;

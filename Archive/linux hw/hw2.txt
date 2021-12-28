@@ -1,0 +1,145 @@
+alex@172.16.160.172's password:
+    ┌──────────────────────────────────────────────────────────────────────┐
+    │                 • MobaXterm Personal Edition v21.4 •                 │
+    │               (SSH client, X server and network tools)               │
+    │                                                                      │
+    │ ➤ SSH session to alex@172.16.160.172                                 │
+    │   • Direct SSH      :  ✔                                             │
+    │   • SSH compression :  ✔                                             │
+    │   • SSH-browser     :  ✔                                             │
+    │   • X11-forwarding  :  ✔  (remote display is forwarded through SSH)  │
+    │                                                                      │
+    │ ➤ For more info, ctrl+click on help or visit our website.            │
+    └──────────────────────────────────────────────────────────────────────┘
+
+Welcome to Ubuntu 20.04.3 LTS (GNU/Linux 5.11.0-38-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+100 updates can be applied immediately.
+44 of these updates are standard security updates.
+Чтобы просмотреть дополнительные обновления выполните: apt list --upgradable
+
+Your Hardware Enablement Stack (HWE) is supported until April 2025.
+Last login: Tue Oct 26 12:29:36 2021 from 172.16.160.27
+alex@alex-VirtualBox:~$ mkdir work
+alex@alex-VirtualBox:~$ cd work
+alex@alex-VirtualBox:~/work$ mkdir dz2
+alex@alex-VirtualBox:~/work$ cd dz2
+alex@alex-VirtualBox:~/work/dz2$ mkdir students
+alex@alex-VirtualBox:~/work/dz2$ mkdir mentors
+alex@alex-VirtualBox:~/work/dz2$ cd students
+alex@alex-VirtualBox:~/work/dz2/students$ nano students_list.txt
+alex@alex-VirtualBox:~/work/dz2/students$ cd ..
+alex@alex-VirtualBox:~/work/dz2$ cd mentors
+alex@alex-VirtualBox:~/work/dz2/mentors$ cat > mentors_list.txt
+Анатолий Конаков
+Наталия Солина
+Виталий Шакиров
+Alena Tektova
+alex@alex-VirtualBox:~/work/dz2/students$ cd ..
+alex@alex-VirtualBox:~/work/dz2$ mv mentors/* students
+alex@alex-VirtualBox:~/work/dz2$ tree
+.
+├── mentors
+└── students
+    ├── mentors_list.txt
+    └── students_list
+
+2 directories, 2 files
+alex@alex-VirtualBox:~/work/dz2$ rm mentors
+rm: невозможно удалить 'mentors': Это каталог
+alex@alex-VirtualBox:~/work/dz2$ rm mentors -r
+alex@alex-VirtualBox:~/work/dz2$ tree
+.
+└── students
+    ├── mentors_list.txt
+    └── students_list
+
+1 directory, 2 files
+alex@alex-VirtualBox:~/work/dz2$ mv students students_and_mentors
+alex@alex-VirtualBox:~/work/dz2$ tree
+.
+└── students_and_mentors
+    ├── mentors_list.txt
+    └── students_list
+
+1 directory, 2 files
+alex@alex-VirtualBox:~/work/dz2$ less -FX students_and_mentors/students_list
+
+Ирина Засыпкина
+
+Светлана Кузнецова
+
+Николай Кривоногов
+
+Максим Иванчев
+
+Александр Астафьев
+
+Денис Байдин
+
+Константин Султанбаев
+
+Денис Давыдов
+
+Сергей Морозов
+
+Вячеслав Шинаков
+
+Регина Бартош
+
+Полина Витальевна Винокурова
+
+Анатолий Малькута
+
+Ринат Атнашев
+
+Юрий Арсеньев
+
+Вячеслав Климов
+
+Павел Игоревич Потькало
+
+Виктория Степанова
+
+Михаил Омельянов
+
+Вячеслав Артемёнок
+
+Евгений Лебедев
+
+Дмитрий Беляев
+
+Михаил С
+
+Anna Pestretsova
+
+Александр Сергейчук
+
+Иван Радченко
+
+Сергей Шибанов
+
+Виталий Заика
+
+Иван Мартынов
+alex@alex-VirtualBox:~/work/dz2$ less -FX students_and_mentors/mentors_list.txt
+Анатолий Конаков
+Наталия Солина
+Виталий Шакиров
+Alena Tektova
+alex@alex-VirtualBox:~/work/dz2$ tree
+.
+└── students_and_mentors
+    ├── mentors_list.txt
+    └── students_list
+
+1 directory, 2 files
+alex@alex-VirtualBox:~/work/dz2$ rm students_and_mentors -r
+alex@alex-VirtualBox:~/work/dz2$ tree
+.
+
+0 directories, 0 files
